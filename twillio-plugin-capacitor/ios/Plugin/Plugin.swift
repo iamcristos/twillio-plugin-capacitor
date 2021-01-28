@@ -17,6 +17,7 @@ public class TwilioVideoViewController: CAPPlugin {
     }
     
     @objc func connect(_ call: CAPPluginCall) {
+        print("we got here")
         guard let roomName = call.options["roomName"] as? String else {
             call.reject("Must provide an roomName")
             return
