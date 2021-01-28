@@ -26,31 +26,45 @@ public class TwilioVideoViewController: CAPPlugin {
             call.reject("Must provide an token")
             return
         }
-        var room: TVIRoom?
-        var camera: TVICameraSource?
-        var localVideoTrack: TVILocalVideoTrack?
-        var localAudioTrack: TVILocalAudioTrack?
-        var remoteParticipant: TVIRemoteParticipant?
-        var remoteView: TVIVideoView?
+        var room: Room?
+        var camera: CameraSource?
+        var localVideoTrack: LocalVideoTrack?
+        var localAudioTrack: LocalAudioTrack?
+        var remoteParticipant: RemoteParticipant?
+        var remoteView: VideoView?
         
 //        var token: String = ""
 //        var roomName: String = ""
 
-        let connectOptions = TVIConnectOptions.init(token: token) { (builder) in
+        let connectOptions = ConnectOptions.init(token: token) { (builder) in
             
             // Use the local media that we prepared earlier.
-            builder.audioTracks = localAudioTrack != nil ? [localAudioTrack!] : [TVILocalAudioTrack]()
-            builder.videoTracks = localVideoTrack != nil ? [localVideoTrack!] : [TVILocalVideoTrack]()
+            builder.audioTracks = localAudioTrack != nil ? [localAudioTrack!] : [LocalAudioTrack]()
+            builder.videoTracks = localVideoTrack != nil ? [localVideoTrack!] : [LocalVideoTrack]()
             
             // The name of the Room where the Client will attempt to connect to. Please note that if you pass an empty
             // Room `name`, the Client will create one for you. You can get the name or sid from any connected Room.
             builder.roomName = roomName
         }
-       room = TwilioVideo.connect(with: connectOptions, delegate: self)
+        room = TwilioVideoSDK.connect(options: connectOptions, delegate: self)
 //        DispatchQueue.main.sync {
 //                  self.bridge.viewController.present(room, animated: true, completion: nil)
 //              }
               
               call.resolve()
+    }
+}
+
+extension TwilioVideoViewController: RoomDelegate {
+    func didConnect(to room: Room) {
+    
+    // At the moment, this example only supports rendering one Participant at a time.
+    
+    print("Connected to room \(room.name) as \(String(describing: room.localParticipant?.identity))")
+    
+//    if (room.remoteParticipants.count > 0) {
+//        self.remoteParticipant = room.remoteParticipants[0]
+//        self.remoteParticipant?.delegate = self
+//    }
     }
 }
