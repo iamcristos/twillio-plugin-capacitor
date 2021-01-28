@@ -5,6 +5,6 @@ declare module '@capacitor/core' {
 }
 
 export interface TwilioVideoViewControllerPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  echo(options: {  roomName: String, token: String }): Promise<{ value: string }>;
   connect(options: { roomName: String, token: String}): Promise<any>;
 }
