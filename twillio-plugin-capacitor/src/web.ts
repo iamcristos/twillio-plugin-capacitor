@@ -13,6 +13,11 @@ export class TwilioVideoViewControllerWeb extends WebPlugin implements TwilioVid
     console.log('ECHO', options);
     return options;
   }
+
+  async connect(options: {  roomName: String | null, token: String | null}): Promise<any> {
+    console.log('Connect', options);
+    // return options;
+  }
 }
 
 const TwilioVideoViewController = new TwilioVideoViewControllerWeb();
