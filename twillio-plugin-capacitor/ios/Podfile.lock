@@ -2,12 +2,12 @@ PODS:
   - Capacitor (2.4.6):
     - CapacitorCordova
   - CapacitorCordova (2.4.6)
-  - TwilioVideo (3.7.2)
+  - TwilioVideo (4.3.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../node_modules/@capacitor/ios`)"
-  - TwilioVideo
+  - TwilioVideo (~> 4.3)
 
 SPEC REPOS:
   trunk:
@@ -22,8 +22,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Capacitor: 0f131577d41c082931f00cc080e2289d503465c8
   CapacitorCordova: 3375b39b5ebca770ac7869f85e4dea32a642c9e0
-  TwilioVideo: 5257640fab00d1b9f44db060815b03516a9eb0e8
+  TwilioVideo: 1ece3d954245b02244ea613408f6a4413ff54987
 
-PODFILE CHECKSUM: fbffaee93ffdb971bbdb94b2ac100b4bdf6be41f
+PODFILE CHECKSUM: 85abf1f92378dab3a52b26e62f4927c1a0d3d563
 
 COCOAPODS: 1.9.3
